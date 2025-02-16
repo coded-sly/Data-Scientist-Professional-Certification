@@ -1,75 +1,55 @@
-<header>
+**Project Summary: Recipe Site Traffic Prediction**
+Introduction:
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+The project aims to build a predictive model to identify high-traffic recipes for a recipe website. This is crucial for optimizing content strategy, attracting visitors, and boosting subscriptions. The project uses a dataset named "recipe_site_traffic_2212.csv" containing information about recipes and their website traffic.
 
-# Introduction to GitHub
+**1. Data Validation:**
 
-_Get started using GitHub in less than an hour._
+The dataset was validated and cleaned to ensure data quality. Steps included:
 
-</header>
+- Handling missing values: Missing values in nutritional columns were dropped, and NaN values in 'high_traffic' were replaced with "Low".
+- Data type conversion: The 'servings' column was cleaned and converted to integer type, and 'category' was converted to categorical type.
+- Data consistency: Invalid entries in the 'category' column were replaced with correct values.
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+**2. Exploratory Data Analysis:**
 
-## Step 1: Create a branch
+Analysis was conducted to understand data characteristics and relationships between variables. Key findings include:
 
-_Welcome to "Introduction to GitHub"! :wave:_
+- Recipe categories like 'Chicken', 'Dessert', and 'Breakfast' are popular, while 'One Dish Meal' is less common.
+- Recipes designed for 4 servings are most prevalent.
+- There's a correlation between high traffic and recipes for 6 servings.
+- Vegetable, Potato, and Pork categories attract the most visitors.
+- The Beverages category has the lowest traffic.
 
-**What is GitHub?**: GitHub is a collaboration platform that uses _[Git](https://docs.github.com/get-started/quickstart/github-glossary#git)_ for versioning. GitHub is a popular place to share and contribute to [open-source](https://docs.github.com/get-started/quickstart/github-glossary#open-source) software.
-<br>:tv: [Video: What is GitHub?](https://www.youtube.com/watch?v=pBy1zgt0XPc)
+**3. Model Development:**
 
-**What is a repository?**: A _[repository](https://docs.github.com/get-started/quickstart/github-glossary#repository)_ is a project containing files and folders. A repository tracks versions of files and folders. For more information, see "[About repositories](https://docs.github.com/en/repositories/creating-and-managing-repositories/about-repositories)" from GitHub Docs.
+Binary classification models were used to predict high-traffic recipes. The process involved:
 
-**What is a branch?**: A _[branch](https://docs.github.com/en/get-started/quickstart/github-glossary#branch)_ is a parallel version of your repository. By default, your repository has one branch named `main` and it is considered to be the definitive branch. Creating additional branches allows you to copy the `main` branch of your repository and safely make any changes without disrupting the main project. Many people use branches to work on specific features without affecting any other parts of the project.
+- Encoding: Categorical features were encoded using pandas get_dummies().
+- Data splitting: The dataset was split into training (80%) and testing (20%) sets, with stratification to maintain target variable proportions.
+- Data scaling: Numerical features were scaled using PowerTransformer to handle skewed distributions.
+- Model selection: Logistic Regression, KNeighborsClassifier, and Decision Tree were chosen as baseline and comparison models.
 
-Branches allow you to separate your work from the `main` branch. In other words, everyone's work is safe while you contribute. For more information, see "[About branches](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)".
+**4. Model Evaluation:**
 
-**What is a profile README?**: A _[profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)_ is essentially an "About me" section on your GitHub profile where you can share information about yourself with the community on GitHub.com. GitHub shows your profile README at the top of your profile page. For more information, see "[Managing your profile README](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme)".
+Models were evaluated using accuracy, precision, and recall.
 
-![profile-readme-example](/images/profile-readme-example.png)
+- Logistic Regression performed best on the test set with 81.56% accuracy and 83.64% precision.
+- KNN and Decision Tree showed signs of overfitting on the training set, resulting in lower performance on the test set.
 
-### :keyboard: Activity: Your first branch
+**5. Business Metrics:**
 
-1. Open a new browser tab and navigate to your newly made repository. Then, work on the steps in your second tab while you read the instructions in this tab.
-2. Navigate to the **< > Code** tab in the header menu of your repository.
+- Precision@K was used to measure the model's ability to identify high-traffic recipes with 80% precision.
+- Logistic Regression achieved a High Traffic Conversion Rate of 88%.
 
-   ![code-tab](/images/code-tab.png)
+**6. Recommendations:**
 
-3. Click on the **main** branch drop-down.
+Based on the findings, the following recommendations were made:
 
-   ![main-branch-dropdown](/images/main-branch-dropdown.png)
+- Prioritize 6-serving recipes and categories like Vegetable, Potato, and Pork for content creation.
+- Investigate and improve engagement in the Beverages category.
+- Continuously collect data to enhance model accuracy.
+- Conduct A/B testing to validate model predictions.
 
-4. In the field, name your branch `my-first-branch`. In this case, the name must be `my-first-branch` to trigger the course workflow.
-5. Click **Create branch: my-first-branch** to create your branch.
-
-   ![create-branch-button](/images/create-branch-button.png)
-
-   The branch will automatically switch to the one you have just created.
-   The **main** branch drop-down bar will reflect your new branch and display the new branch name.
-
-6. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-
-<footer>
-
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
-
----
-
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/introduction-to-github) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
-
-&copy; 2024 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
-</footer>
+**Submission:**
+The workspace containing the report and code will be published and submitted through the DataCamp Certification Dashboard and Github.
