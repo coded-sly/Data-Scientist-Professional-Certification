@@ -1,9 +1,9 @@
-Project Summary: Recipe Site Traffic Prediction
+**Project Summary: Recipe Site Traffic Prediction**
 Introduction:
 
-The project aims to build a predictive model to identify high-traffic recipes for a recipe website. This is crucial for optimizing content strategy, attracting more visitors, and potentially boosting subscriptions. The project uses a dataset named "recipe_site_traffic_2212.csv" containing information about recipes and their website traffic.
+The project aims to build a predictive model to identify high-traffic recipes for a recipe website. This is crucial for optimizing content strategy, attracting visitors, and boosting subscriptions. The project uses a dataset named "recipe_site_traffic_2212.csv" containing information about recipes and their website traffic.
 
-1. Data Validation:
+**1. Data Validation:**
 
 The dataset was validated and cleaned to ensure data quality. Steps included:
 
@@ -11,7 +11,7 @@ The dataset was validated and cleaned to ensure data quality. Steps included:
 - Data type conversion: The 'servings' column was cleaned and converted to integer type, and 'category' was converted to categorical type.
 - Data consistency: Invalid entries in the 'category' column were replaced with correct values.
 
-2. Exploratory Data Analysis:
+**2. Exploratory Data Analysis:**
 
 Analysis was conducted to understand data characteristics and relationships between variables. Key findings include:
 
@@ -21,7 +21,7 @@ Analysis was conducted to understand data characteristics and relationships betw
 - Vegetable, Potato, and Pork categories attract the most visitors.
 - The Beverages category has the lowest traffic.
 
-3. Model Development:
+**3. Model Development:**
 
 Binary classification models were used to predict high-traffic recipes. The process involved:
 
@@ -30,19 +30,19 @@ Binary classification models were used to predict high-traffic recipes. The proc
 - Data scaling: Numerical features were scaled using PowerTransformer to handle skewed distributions.
 - Model selection: Logistic Regression, KNeighborsClassifier, and Decision Tree were chosen as baseline and comparison models.
 
-4. Model Evaluation:
+**4. Model Evaluation:**
 
 Models were evaluated using accuracy, precision, and recall.
 
 - Logistic Regression performed best on the test set with 81.56% accuracy and 83.64% precision.
 - KNN and Decision Tree showed signs of overfitting on the training set, resulting in lower performance on the test set.
 
-5. Business Metrics:
+**5. Business Metrics:**
 
 - Precision@K was used to measure the model's ability to identify high-traffic recipes with 80% precision.
 - Logistic Regression achieved a High Traffic Conversion Rate of 88%.
 
-6. Recommendations:
+**6. Recommendations:**
 
 Based on the findings, the following recommendations were made:
 
@@ -51,5 +51,5 @@ Based on the findings, the following recommendations were made:
 - Continuously collect data to enhance model accuracy.
 - Conduct A/B testing to validate model predictions.
 
-Submission:
+**Submission:**
 The workspace containing the report and code will be published and submitted through the DataCamp Certification Dashboard and Github.
